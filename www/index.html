@@ -6,15 +6,25 @@
         <meta name="author" content="Wayou">
         <meta name="description" content="hichat | a simple chat application built with node.js and websocket">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>hichat</title>
+        <title>互动</title>
         <link rel="stylesheet" href="styles/main.css">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <style type="text/css">
+            .finger{
+                vertical-align:middle;
+            }
+            h1{
+                background-color: white;
+                text-align: center;
+                font-family: STCaiyun;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper">
             <div class="banner">
-                <h1>HiChat :)</h1>
+                <h1><img src="img/left_finger.jpg" class="finger">畅所欲言<img src="img/right_finger.jpg" class="finger"></h1>
                 <span id="status"></span>
             </div>
             <div id="historyMsg">
@@ -27,10 +37,10 @@
                         <input type="button" value="image"  />
                         <input id="sendImage" type="file" value="image"/>
                     </label>
-                    <input id="clearBtn" type="button" value="clear" title="clear screen" />
+                    <!-- <input id="clearBtn" type="button" value="clear" title="clear screen" /> -->
                 </div>
-                <textarea id="messageInput" placeHolder="enter to send"></textarea>
-                <input id="sendBtn" type="button" value="SEND">
+                <textarea id="messageInput" placeHolder="说点什么吧~"></textarea>
+                <input id="sendBtn" type="button" value="发送">
                 <div id="emojiWrapper">
                 </div>
             </div>
@@ -38,12 +48,12 @@
         <div id="loginWrapper">
             <p id="info">connecting to server...</p>
             <div id="nickWrapper">
-                <input type="text" placeHolder="nickname" id="nicknameInput" />
-                <input type="button" value="OK" id="loginBtn" />
+                <input type="text" placeHolder="名字" id="nicknameInput" />
+                <input type="button" value="确认" id="loginBtn" />
             </div>
         </div>
         <footer>
-            <small>view on <a href="https://github.com/Wayou/HiChat">GitHub</a> | <a href="mailto:liuwayong@gmail.com">contact me</a></small>
+        
         </footer>
         <script src="/socket.io/socket.io.js"></script>
         <script src="scripts/hichat.js"></script>

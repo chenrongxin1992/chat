@@ -4,7 +4,6 @@ html, body {
     font-family: sans-serif;
 }
 .wrapper {
-    width: 500px;
     height: 640px;
     padding: 5px;
     margin: 0 auto;
@@ -26,8 +25,9 @@ html, body {
     display: none;
 }
 .banner {
-    height: 80px;
+    height: auto;
     width: 100%;
+    text-align: center;
 }
 .banner p {
     float: left;
@@ -57,6 +57,7 @@ html, body {
     width: 50px;
     border: none;
     padding: 0;
+    vertical-align: middle;
 }
 /*custom the file input*/
 
@@ -73,16 +74,15 @@ html, body {
 /*end custom file input*/
 
 #messageInput {
-    width: 440px;
+    width: 250px;
     max-width: 440px;
-    height: 90px;
-    max-height: 90px;
+    height: 30px;
+    max-height: 96px;
     float:left;
 }
 #sendBtn {
     width: 50px;
-    height: 96px;
-    float: right;
+    height: 36px;
 }
 #emojiWrapper {
     display: none;
@@ -103,6 +103,12 @@ html, body {
 }
 .emoji{
     display: inline;
+}
+#nicknameInput{
+    height: 23px;
+}
+#loginBtn{
+    height: 29px;
 }
 footer {
     text-align: center;
