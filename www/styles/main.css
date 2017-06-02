@@ -4,7 +4,6 @@ html, body {
     font-family: sans-serif;
 }
 .wrapper {
-    width: 100%;
     height: 640px;
     padding: 5px;
     margin: 0 auto;
@@ -73,7 +72,7 @@ html, body {
     overflow: hidden;
 }
 /*end custom file input*/
-
+p{ word-wrap:break-word; word-break:normal; }
 #messageInput {
     /* width: 250px;
     max-width: 440px; */
@@ -84,7 +83,7 @@ html, body {
     float:left;
 }
 #sendBtn {
-    width: 50px;
+    width: 18%;
     height: 36px;
 }
 #emojiWrapper {

@@ -67,24 +67,28 @@ HiChat.prototype = {
         }, false);
         document.getElementById('sendBtn').addEventListener('click', function() {
             var messageInput = document.getElementById('messageInput'),
-                msg = messageInput.value,
-                color = document.getElementById('colorStyle').value;
+                msg = messageInput.value;
+                // color = document.getElementById('colorStyle').value;
             messageInput.value = '';
             // messageInput.focus();
             if (msg.trim().length != 0) {
-                that.socket.emit('postMsg', msg, color);
-                that._displayNewMsg('我 ', msg, color);
+                // that.socket.emit('postMsg', msg, color);
+                // that._displayNewMsg('我 ', msg, color);
+                that.socket.emit('postMsg', msg);
+                that._displayNewMsg('我 ', msg);
                 return;
             };
         }, false);
         document.getElementById('messageInput').addEventListener('keyup', function(e) {
             var messageInput = document.getElementById('messageInput'),
-                msg = messageInput.value,
-                color = document.getElementById('colorStyle').value;
+                msg = messageInput.value;
+                // color = document.getElementById('colorStyle').value;
             if (e.keyCode == 13 && msg.trim().length != 0) {
                 messageInput.value = '';
-                that.socket.emit('postMsg', msg, color);
-                that._displayNewMsg('我 ', msg, color);
+                // that.socket.emit('postMsg', msg, color);
+                // that._displayNewMsg('我 ', msg, color);
+                that.socket.emit('postMsg', msg);
+                that._displayNewMsg('我 ', msg);
             };
         }, false);
         /*document.getElementById('clearBtn').addEventListener('click', function() {
