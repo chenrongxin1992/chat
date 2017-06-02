@@ -19,7 +19,7 @@ HiChat.prototype = {
         this.socket.on('connect', function() {
             document.getElementById('info').textContent = '---> 请输入你的大名 <---';
             document.getElementById('nickWrapper').style.display = 'block';
-            document.getElementById('nicknameInput').focus();
+            /*document.getElementById('nicknameInput').focus();*/
         });
         this.socket.on('nickExisted', function() {
             document.getElementById('info').textContent = '该名字有人使用啦，请用别的吧!';
@@ -27,7 +27,7 @@ HiChat.prototype = {
         this.socket.on('loginSuccess', function() {
             document.title = 'hichat | ' + document.getElementById('nicknameInput').value;
             document.getElementById('loginWrapper').style.display = 'none';
-            document.getElementById('messageInput').focus();
+            // document.getElementById('messageInput').focus();
         });
         this.socket.on('error', function(err) {
             if (document.getElementById('loginWrapper').style.display == 'none') {
@@ -70,7 +70,7 @@ HiChat.prototype = {
                 msg = messageInput.value,
                 color = document.getElementById('colorStyle').value;
             messageInput.value = '';
-            messageInput.focus();
+            // messageInput.focus();
             if (msg.trim().length != 0) {
                 that.socket.emit('postMsg', msg, color);
                 that._displayNewMsg('我 ', msg, color);
@@ -124,7 +124,7 @@ HiChat.prototype = {
             var target = e.target;
             if (target.nodeName.toLowerCase() == 'img') {
                 var messageInput = document.getElementById('messageInput');
-                messageInput.focus();
+                // messageInput.focus();
                 messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
             };
         }, false);
