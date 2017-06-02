@@ -97,8 +97,8 @@ HiChat.prototype = {
         document.getElementById('sendImage').addEventListener('change', function() {
             if (this.files.length != 0) {
                 var file = this.files[0],
-                    reader = new FileReader(),
-                    color = document.getElementById('colorStyle').value;
+                    reader = new FileReader();
+                    // color = document.getElementById('colorStyle').value;
                 if (!reader) {
                     that._displayNewMsg('system', '!your browser doesn\'t support fileReader', 'red');
                     this.value = '';
@@ -106,8 +106,10 @@ HiChat.prototype = {
                 };
                 reader.onload = function(e) {
                     this.value = '';
-                    that.socket.emit('img', e.target.result, color);
-                    that._displayImage('我 ', e.target.result, color);
+                    that.socket.emit('img', e.target.result);
+                    that._displayImage('我 ', e.target.result);
+                    // that.socket.emit('img', e.target.result, color);
+                    // that._displayImage('我 ', e.target.result, color);
                 };
                 reader.readAsDataURL(file);
             };
