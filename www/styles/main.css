@@ -88,7 +88,7 @@ p{ word-wrap:break-word; word-break:normal; }
 }
 #emojiWrapper {
     display: none;
-    max-width: 320px;
+    max-width: 100%;
     bottom: 105px;
     position: absolute;
     background-color: #aaa;
