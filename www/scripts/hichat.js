@@ -134,6 +134,25 @@ HiChat.prototype = {
                 messageInput.value = messageInput.value + '[emoji:' + target.title + ']';
             };
         }, false);
+        this._initialQQface();
+        document.getElementById('qqface').addEventListener('click',function(e){
+            var qqfacewrapper = document.getElementById('qqfaceWrapper')
+            qqfacewrapper.style.display = 'block'
+            e.stopPropagation()
+        },false)
+        document.body.addEventListener('click',function(e){
+            var qqfacewrapper = document.getElementById('qqfaceWrapper')
+            if(e.target != qqfacewrapper){
+                qqfacewrapper.style.display = 'none'
+            }
+        })
+        document.getElementById('qqfaceWrapper').addEventListener('click',function(e){
+            var target = e.target
+            if(target.nodeName.toLowerCase() == 'img'){
+                var messageInput = document.getElementById('messageInput')
+                messageInput.value = messageInput.value + '[qqface:' + target.title + ']'
+            }
+        },false)
     },
     _initialEmoji: function() {
         var emojiContainer = document.getElementById('emojiWrapper'),
@@ -146,12 +165,26 @@ HiChat.prototype = {
         };
         emojiContainer.appendChild(docFragment);
     },
+    _initialQQface: function(){
+        var qqfaceContainer = document.getElementById('qqfaceWrapper'),
+            doccFragment = document.createDocumentFragment()
+        for (var i = 100; i > 0; i--){
+            var qqfaceItem = document.createElement('img')
+            qqfaceItem.src = '../content/qqface/' + i + '.gif'
+            qqfaceItem.title = i
+            doccFragment.appendChild(qqfaceItem)
+        }
+        qqfaceContainer.appendChild(doccFragment)
+    },
     _displayNewMsg: function(user, msg, color) {
         var container = document.getElementById('historyMsg'),
             msgToDisplay = document.createElement('p'),
             date = new Date().toTimeString().substr(0, 8),
             //determine whether the msg contains emoji
             msg = this._showEmoji(msg);
+            console.log('msg--->',msg)
+            msg = this._showQqface(msg)
+            console.log('msg--->',msg)
         msgToDisplay.style.color = color || '#000';
         msgToDisplay.innerHTML = user + '<span class="timespan"> (' + date + '): </span>' + msg;
         container.appendChild(msgToDisplay);
@@ -179,6 +212,21 @@ HiChat.prototype = {
                 result = result.replace(match[0], '<img class="emoji" src="../content/emoji/' + emojiIndex + '.gif" />');//todo:fix this in chrome it will cause a new request for the image
             };
         };
+        return result;
+    },
+    _showQqface : function(msg){
+        var match,result = msg,
+            reg = /\[qqface:\d+\]/g,
+            qqfaceIndex,
+            totalQqfaceNum = document.getElementById('qqfaceWrapper').children.length
+        while(match = reg.exec(msg)){
+            qqfaceIndex = match[0].slice(8,-1)
+            if(qqfaceIndex > totalQqfaceNum){
+                result = result.replace(match[0],'[X]')
+            }else{
+                result = result.replace(match[0],'<img class="qqface" src="../content/qqface/"'+ qqfaceIndex + '.gif" />')
+            }
+        }
         return result;
     }
 };
